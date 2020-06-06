@@ -46,7 +46,7 @@ def train_model():
     
     return model
 
-def get_weights(model):
+def get_params(model):
     weights=[]
     for i in range(len(model.layers)):
 #         weights.append(layer.get_weights()[0].tolist())
@@ -56,7 +56,8 @@ def get_weights(model):
     return weights
 
 import json
-def get_weights_json(weights, ret_dict = False):
+
+def get_params_json(weights, ret_dict = False):
     dat = {}
     for i in range(len(weights)):
         sdat = {}
