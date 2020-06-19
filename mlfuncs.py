@@ -1,15 +1,16 @@
-# import numpy as np
-# import tensorflow as tf
-# import matplotlib.pyplot as plt
-# from tensorflow import keras
-# import json
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from tensorflow import keras
+import json
+import pickle
 
 # from tensorflow.keras.datasets import mnist
 # data = {}
 # (data['X_train'], data['Y_train']), (data['X_test'], data['Y_test']) = mnist.load_data()
 
 def make_model(data=data):
-    model=None
+    model = None
     data['X_train'] = data['X_train']/255.
     data['X_test'] = data['X_test']/255.
     
@@ -55,19 +56,23 @@ def get_params(model):
                         model.layers[i].get_weights()[1].tolist()])
     return weights
 
-import json
-
 def get_params_json(weights, ret_dict = False):
     dat = {}
     for i in range(len(weights)):
         sdat = {}
         sdat['weights'] = weights[i][0]
         sdat['biases'] = weights[i][1]
-        print(len(weights[i][0]), len(weights[i][0][0]))
+#         print(len(weights[i][0]), len(weights[i][0][0]))
         dat['layer'+str(i)] = sdat
-        print(len(dat['layer'+str(i)]['weights']), len(dat['layer'+str(i)]['weights'][0]))
-    
+#         print(len(dat['layer'+str(i)]['weights']), len(dat['layer'+str(i)]['weights'][0]))
+
+    with open('dat.pickle', 'wb') as f:
+        p.dump(dat, f)
+        f.close()
+        print()
+        
     if ret_dict: return dat
-    
+
     dat = json.dumps(dat)
+    
     return dat
