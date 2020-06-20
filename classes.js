@@ -1,6 +1,4 @@
-
 class neuron {
-    
     constructor(x = width / 2, y = height / 2, value = 1) {
         this.x = x
         this.y = y
@@ -27,7 +25,6 @@ class neuron {
 }
 
 class con {
-
     constructor(n1, n2, weight) {
         this.n1 = n1;
         this.n2 = n2;

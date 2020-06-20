@@ -20,7 +20,7 @@ def make_model(data=data):
     model = keras.Sequential([
 #         keras.layers.Flatten(input_shape=(28, 28)),
         
-        keras.layers.Dense(16, activation='relu', input_shape=(784,)),
+        keras.layers.Dense(10, activation='relu', input_shape=(784,)),
         keras.layers.Dense(10, activation='softmax')
     ])
 
