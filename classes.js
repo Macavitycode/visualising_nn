@@ -25,6 +25,7 @@ class neuron {
 }
 
 class con {
+    // weight corresponds to thickness of the line
     constructor(n1, n2, weight) {
         this.n1 = n1;
         this.n2 = n2;
