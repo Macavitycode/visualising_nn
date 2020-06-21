@@ -44,10 +44,21 @@ class con {
         //    var c = color('cyan');
         //    c.setAlpha(correctedValue);
         //}
+        if (this.weight == 0) {
+            stroke('green');    
+            strokeWeight(1);
+        }
+        else if (this.weight < 0) {
+            stroke('black');
+            strokeWeight(this.weight * 5);
+        }
+        else {
+            stroke('white');
+            strokeWeight(this.weight * 5);
+        }
 
-        stroke(0);
-        strokeWeight(this.weight);
         line(this.n1.x, this.n1.y, this.n2.x, this.n2.y);
         strokeWeight(1);
+        stroke(0);
     }
 }

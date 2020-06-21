@@ -1,5 +1,5 @@
 function preload() {
-    dat = loadJSON('dat.json');
+    l1dat = loadJSON('l1dat.json');
 }
 
 function setup() {
@@ -13,28 +13,38 @@ function draw() {
     // inp is input layer
     inp = show_layer(1, 100);
     l1 = show_layer(10, 300);
-    l2 = show_layer(10, 500);
-    l3 = show_layer(1, 700);
-
+    l2 = show_layer(10, 700);
 
     w0 = show_connections(inp, l1);
-    w1 = show_connections(l1, l2);
-    w2 = show_connections(l2, l3);
+    w1 = show_connections(l1, l2, l1dat['weights']);
 }
 
 // Prints connections between two layers and returns a 2d list of cons
 // conns[neuron in l1][neuron in l2]
-function show_connections(l1, l2) {
+function show_connections(l1, l2, weights=0) {
     var conns = [];
     var len1 = l1.length;
     var len2 = l2.length;
 
-    for (var i = 0; i < len1; i++) {
-        var node_conns = [];
-        for (var j = 0; j < len2; j++)
-            // The 1 here represents connection weight (strength of corelation)
-            node_conns.push(new con(l1[i], l2[j], 1));
-        conns.push(node_conns);
+    if (!weights) {
+        for (var i = 0; i < len1; i++) {
+            var node_conns = [];
+            for (var j = 0; j < len2; j++)
+                // The 1 here represents connection weight (strength of corelation)
+                // -0.2 shows fixed negative corelation
+                node_conns.push(new con(l1[i], l2[j], 0));
+            conns.push(node_conns);
+        }
+    }
+
+    else {
+        for (var i = 0; i < len1; i++) {
+            var node_conns = [];
+            for (var j = 0; j < len2; j++)
+                // The 1 here represents connection weight (strength of corelation)
+                node_conns.push(new con(l1[i], l2[j], weights[i][j]));
+            conns.push(node_conns);
+        }
     }
 
     for (i = 0; i < len1; i++) {
