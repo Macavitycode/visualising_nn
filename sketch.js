@@ -1,5 +1,5 @@
 function preload() {
-    l1dat = loadJSON('l1dat.json');
+    //l1dat = loadJSON('l1dat.json');
 }
 
 function setup() {
