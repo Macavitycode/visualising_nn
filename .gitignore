@@ -1,12 +1,11 @@
 *
 
 !.gitignore
-!main_notebook.ipynb
-!requirements.txt
-!README.md
-!mlfuncs.py
-!dat.pickle
-!dat.json
-!index.html
-!sketch.js
 !classes.js
+!sketch.js
+!index.html
+!iris_model_js/
+!iris_model_js/*
+!requirements.txt
+!Simplified_main.ipynb
+!README.md

@@ -34,25 +34,18 @@ class con {
 
     display() {
         colorMode(RGB, 255, 255, 255, 1);
-        // map weight from to 0 -> 1
-        //var correctedValue = 1;
-        //if (this.value > 0) {
-        //    var c = color('orange');
-        //    c.setAlpha(correctedValue);
-        //}
-        //else {
-        //    var c = color('cyan');
-        //    c.setAlpha(correctedValue);
-        //}
+
         if (this.weight == 0) {
             stroke('green');    
             strokeWeight(1);
         }
         else if (this.weight < 0) {
+            //console.log(this.weight);
             stroke('black');
-            strokeWeight(this.weight * 5);
+            strokeWeight(this.weight * -5);
         }
-        else {
+        else if (this.weight > 0) {
+            //console.log(this.weight);
             stroke('white');
             strokeWeight(this.weight * 5);
         }
