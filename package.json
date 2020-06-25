@@ -1,0 +1,24 @@
+{
+  "name": "visualising_nn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "classes.js",
+  "scripts": {
+   "test": "echo \"Error: no test specified\" && exit 1",
+   "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Macavitycode/visualising_nn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Macavitycode/visualising_nn/issues"
+  },
+  "homepage": "https://github.com/Macavitycode/visualising_nn#readme",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
