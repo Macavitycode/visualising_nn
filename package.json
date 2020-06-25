@@ -4,8 +4,8 @@
   "description": "",
   "main": "classes.js",
   "scripts": {
-   "test": "echo \"Error: no test specified\" && exit 1",
-   "start": "lite-server"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
   },
   "repository": {
     "type": "git",

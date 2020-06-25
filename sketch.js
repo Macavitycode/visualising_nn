@@ -1,7 +1,23 @@
 let s1, s2, s3, s4; // Sliders for the 4 values input into the model
 
+//function mousePressed() {
+//    wj = {
+//        l0: {
+//            w: model.layers[0].getWeights()[0].arraySync(),
+//            b: model.layers[0].getWeights()[1].arraySync()
+//        },
+//        l1: {
+//            w: model.layers[1].getWeights()[0].arraySync(),
+//            b: model.layers[1].getWeights()[1].arraySync()
+//        }
+//    };
+//    if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+//        saveJSON(wj, "weights.json");
+//    }
+//}
+
 async function preload() {
-    model = await tf.loadLayersModel('iris_model_js/model.json');
+    model = await tf.loadLayersModel("iris_model_js/model.json");
 }
 
 function setup() {
@@ -20,7 +36,6 @@ function setup() {
     s4 = createSlider(0, 3, 1.5, 0.075);
     s4.position(20, 685);
 }
-
 
 async function draw() {
     background(200);
@@ -43,12 +58,27 @@ async function draw() {
     w1 = show_connections(l1, op, model.layers[1].getWeights()[0].arraySync());
 
     var sv = tf.tensor([[s1v, s2v, s3v, s4v]]);
-    var pred = await model.predict([sv]);
+    var pred = await model.predict([sv]).squeeze();
 
-    console.log(pred.dataSync());
+    //console.log(pred.argMax().dataSync());
+
+    show_prediction(pred.argMax().dataSync(), 3, 900);
 
     sv.dispose();
     pred.dispose();
+}
+
+
+// Shows prediction
+function show_prediction(pred, num_of_classes, x) {
+
+    console.log(pred);
+
+    var incs = 700 / (num_of_classes + 1);
+
+    strokeWeight(0);
+    fill('green');
+    circle(x, 225 + incs * pred, 30);
 }
 
 // Prints connections between two layers and returns a 2d list of cons
@@ -74,7 +104,7 @@ function show_connections(l1, l2, weights = 0) {
                 // The 1 here represents connection weight (strength of corelation)
                 //console.log(weights);
                 node_conns.push(new con(l1[i], l2[j], weights[i][j]));
-                }
+            }
             conns.push(node_conns);
         }
     }
