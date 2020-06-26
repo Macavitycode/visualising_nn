@@ -20,7 +20,7 @@ class neuron {
         }
 
         fill(c);
-        circle(this.x, this.y, 30);
+        circle(this.x, this.y, 40);
     }
 }
 
@@ -42,12 +42,12 @@ class con {
         else if (this.weight < 0) {
             //console.log(this.weight);
             stroke('black');
-            strokeWeight(this.weight * -5);
+            strokeWeight(this.weight * -4);
         }
         else if (this.weight > 0) {
             //console.log(this.weight);
             stroke('white');
-            strokeWeight(this.weight * 5);
+            strokeWeight(this.weight * 4);
         }
 
         line(this.n1.x, this.n1.y, this.n2.x, this.n2.y);
